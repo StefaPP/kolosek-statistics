@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227110651) do
+ActiveRecord::Schema.define(version: 20171227143950) do
 
   create_table "commits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -30,8 +30,10 @@ ActiveRecord::Schema.define(version: 20171227110651) do
     t.integer  "user_id"
     t.string   "avatar"
     t.string   "username"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "github_id"
+    t.string   "github_token"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 20171227110651) do
     t.string   "head_sha"
     t.string   "base_label"
     t.string   "base_sha"
+    t.integer  "repository_id"
+    t.index ["repository_id"], name: "index_pull_requests_on_repository_id", using: :btree
   end
 
   create_table "repositories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,6 +142,7 @@ ActiveRecord::Schema.define(version: 20171227110651) do
   add_foreign_key "commits", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "pull_request_files", "pull_requests"
+  add_foreign_key "pull_requests", "repositories"
   add_foreign_key "review_comments", "reviews"
   add_foreign_key "review_comments", "users"
   add_foreign_key "reviews", "users"

@@ -1,2 +1,25 @@
 <h3>Welcome</h3>
 <p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<%= link_to "Add github account", '#', :method => :get, :remote => true, "data-toggle" => "modal", "data-target" => "#login-modal" %></td>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h1>Login to Your GitHub account</h1>
+      <br>
+      <%= form_tag('/github_login', method: :post) do %>
+        <div class="col-sm-12">
+          <div class="row inputgroup">
+            <%= label :github_login, :email %>
+            <%= text_field :github_login, :email %>
+          </div>
+          <div class="row inputgroup">
+            <%= label :github_login, :password %>
+            <%= password_field :github_login, :password %> </div>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag "Login", :class => 'btn button-header' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="management-header">
+        <h6>
+          Github authentication
+        </h6>
+      </div>
+      <br>
+      <%= form_for('/github_login', method: :post) do %>
+        <div class="col-sm-12">
+          <div class="row inputgroup">
+            <%= text_field :github_username, type: "text", class: "inputfield", placeholder: 'Enter email', required: "true", id: "email" %>
+          </div>
+          <div class="row inputgroup">
+            <%= text_field :password, type: "password", class: "inputfield", placeholder: 'Enter password', required: "true", id: "password" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag "Login", :class => 'btn button-header'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

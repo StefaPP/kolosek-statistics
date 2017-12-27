@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <h3>Profile</h3>
+    <div class="column">
+      <p> <%= @profile %> </p>
+      <ul>
+        <% @repos.each do |repo| %>
+          <li>
+            <a> <%= repo.name %> </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
